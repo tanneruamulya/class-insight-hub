@@ -9,34 +9,15 @@ import {
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-const classesData = [
-  {
-    id: "1",
-    name: "Class 10",
-    sections: [
-      { id: "10-a", name: "Section A", students: 32 },
-      { id: "10-b", name: "Section B", students: 30 },
-      { id: "10-c", name: "Section C", students: 28 },
-    ]
-  },
-  {
-    id: "2",
-    name: "Class 11",
-    sections: [
-      { id: "11-a", name: "Section A", students: 35 },
-      { id: "11-b", name: "Section B", students: 33 },
-    ]
-  },
-  {
-    id: "3",
-    name: "Class 12",
-    sections: [
-      { id: "12-a", name: "Section A", students: 30 },
-      { id: "12-b", name: "Section B", students: 28 },
-      { id: "12-c", name: "Section C", students: 32 },
-    ]
-  },
-];
+const classesData = Array.from({ length: 10 }, (_, i) => ({
+  id: String(i + 1),
+  name: `Class ${i + 1}`,
+  sections: [
+    { id: `${i + 1}-a`, name: "Section A", students: 28 + Math.floor(Math.random() * 10) },
+    { id: `${i + 1}-b`, name: "Section B", students: 28 + Math.floor(Math.random() * 10) },
+    { id: `${i + 1}-c`, name: "Section C", students: 28 + Math.floor(Math.random() * 10) },
+  ]
+}));
 
 const Classes = () => {
   const navigate = useNavigate();
@@ -93,7 +74,7 @@ const Classes = () => {
                 key={cls.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * index }}
+                transition={{ delay: 0.05 * index }}
                 className="bg-card rounded-2xl shadow-soft overflow-hidden"
               >
                 {/* Class Header */}
